@@ -1,0 +1,53 @@
+{
+  "lifeOptions": [
+    {
+      "id": 1,
+      "value": "Alive",
+      "icon": "heart"
+    },
+    {
+      "id": 2,
+      "value": "Dead",
+      "icon": "heart-dislike-outline"
+    },
+    {
+      "id": 3,
+      "value": "No data",
+      "icon": "help"
+    }
+  ],
+  "maritalStatusOptions": [
+    {
+      "id": 1,
+      "value": "Single",
+      "icon": "person-outline"
+    },
+    {
+      "id": 2,
+      "value": "Married",
+      "icon": "people-outline"
+    },
+    {
+      "id": 3,
+      "value": "No data",
+      "icon": "help"
+    }
+  ],
+  "genderOptions": [
+    {
+      "id": 1,
+      "value": "Male",
+      "icon": "man"
+    },
+    {
+      "id": 2,
+      "value": "Female",
+      "icon": "woman"
+    },
+    {
+      "id": 3,
+      "value": "Other",
+      "icon": "transgender"
+    }
+  ]
+}

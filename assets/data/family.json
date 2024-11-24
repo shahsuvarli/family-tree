@@ -1,0 +1,99 @@
+[
+  {
+    "title": "Parent",
+    "data": [
+      {
+        "id": 1,
+        "name": "John",
+        "surname": "Doe",
+        "date_of_join": "1973-01-01",
+        "full_name_initials": "JD",
+        "gender": "male"
+      },
+      {
+        "id": 2,
+        "name": "Jane",
+        "surname": "Doe",
+        "date_of_join": "1975-02-02",
+        "full_name_initials": "JD",
+        "gender": "female"
+      }
+    ]
+  },
+  {
+    "title": "Spouse",
+    "data": [
+      {
+        "id": 3,
+        "name": "Alex",
+        "surname": "Doe",
+        "date_of_join": "1993-03-03",
+        "full_name_initials": "AD",
+        "gender": "non-binary"
+      }
+    ]
+  },
+  {
+    "title": "Child",
+    "data": [
+      {
+        "id": 4,
+        "name": "Chris",
+        "surname": "Doe",
+        "date_of_join": "2018-04-04",
+        "full_name_initials": "CD",
+        "gender": "male"
+      },
+      {
+        "id": 5,
+        "name": "Emma",
+        "surname": "Doe",
+        "date_of_join": "2020-05-05",
+        "full_name_initials": "ED",
+        "gender": "female"
+      }
+    ]
+  },
+  {
+    "title": "Sibling",
+    "data": [
+      {
+        "id": 6,
+        "name": "Mike",
+        "surname": "Doe",
+        "date_of_join": "1995-06-06",
+        "full_name_initials": "MD",
+        "gender": "male"
+      },
+      {
+        "id": 7,
+        "name": "Anna",
+        "surname": "Doe",
+        "date_of_join": "1998-07-07",
+        "full_name_initials": "AD",
+        "gender": "female"
+      }
+    ]
+  },
+  {
+    "title": "Pet",
+    "data": [
+      {
+        "id": 8,
+        "name": "Buddy",
+        "surname": "Doe",
+        "date_of_join": "2019-08-08",
+        "full_name_initials": "BD",
+        "gender": "male"
+      },
+      {
+        "id": 9,
+        "name": "Whiskers",
+        "surname": "Doe",
+        "date_of_join": "2021-09-09",
+        "full_name_initials": "WD",
+        "gender": "female"
+      }
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "Ali",
+    "surname": "Aliyev",
+    "date_of_join": "2023-01-15",
+    "full_name_initials": "AA",
+    "gender": "male"
+  },
+  {
+    "id": 2,
+    "name": "Leyla",
+    "surname": "Huseynova",
+    "date_of_join": "2023-02-20",
+    "full_name_initials": "LH",
+    "gender": "female"
+  },
+  {
+    "id": 3,
+    "name": "Murad",
+    "surname": "Mammadov",
+    "date_of_join": "2023-03-10",
+    "full_name_initials": "MM",
+    "gender": "male"
+  },
+  {
+    "id": 4,
+    "name": "Aysel",
+    "surname": "Aliyeva",
+    "date_of_join": "2023-04-05",
+    "full_name_initials": "AA",
+    "gender": "female"
+  },
+  {
+    "id": 5,
+    "name": "Rashad",
+    "surname": "Karimov",
+    "date_of_join": "2023-05-18",
+    "full_name_initials": "RK",
+    "gender": "male"
+  },
+  {
+    "id": 6,
+    "name": "Nigar",
+    "surname": "Guliyeva",
+    "date_of_join": "2023-06-22",
+    "full_name_initials": "NG",
+    "gender": "female"
+  },
+  {
+    "id": 7,
+    "name": "Elvin",
+    "surname": "Ismayilov",
+    "date_of_join": "2023-07-30",
+    "full_name_initials": "EI",
+    "gender": "male"
+  },
+  {
+    "id": 8,
+    "name": "Gunel",
+    "surname": "Tagiyeva",
+    "date_of_join": "2023-08-14",
+    "full_name_initials": "GT",
+    "gender": "female"
+  },
+  {
+    "id": 9,
+    "name": "Kamran",
+    "surname": "Aliyev",
+    "date_of_join": "2023-09-01",
+    "full_name_initials": "KA",
+    "gender": "male"
+  },
+  {
+    "id": 10,
+    "name": "Sevda",
+    "surname": "Mammadova",
+    "date_of_join": "2023-10-10",
+    "full_name_initials": "SM",
+    "gender": "female"
+  },
+  {
+    "id": 11,
+    "name": "Farid",
+    "surname": "Huseynov",
+    "date_of_join": "2023-11-05",
+    "full_name_initials": "FH",
+    "gender": "male"
+  },
+  {
+    "id": 12,
+    "name": "Aynur",
+    "surname": "Karimova",
+    "date_of_join": "2023-12-20",
+    "full_name_initials": "AK",
+    "gender": "female"
+  },
+  {
+    "id": 13,
+    "name": "Tural",
+    "surname": "Guliyev",
+    "date_of_join": "2023-01-25",
+    "full_name_initials": "TG",
+    "gender": "male"
+  },
+  {
+    "id": 14,
+    "name": "Narmin",
+    "surname": "Ismayilova",
+    "date_of_join": "2023-02-15",
+    "full_name_initials": "NI",
+    "gender": "female"
+  },
+  {
+    "id": 15,
+    "name": "Orkhan",
+    "surname": "Tagiyev",
+    "date_of_join": "2023-03-30",
+    "full_name_initials": "OT",
+    "gender": "male"
+  },
+  {
+    "id": 16,
+    "name": "Sabina",
+    "surname": "Aliyeva",
+    "date_of_join": "2023-04-25",
+    "full_name_initials": "SA",
+    "gender": "female"
+  },
+  {
+    "id": 17,
+    "name": "Emin",
+    "surname": "Mammadov",
+    "date_of_join": "2023-05-10",
+    "full_name_initials": "EM",
+    "gender": "male"
+  },
+  {
+    "id": 18,
+    "name": "Zeynab",
+    "surname": "Huseynova",
+    "date_of_join": "2023-06-15",
+    "full_name_initials": "ZH",
+    "gender": "female"
+  },
+  {
+    "id": 19,
+    "name": "Ilgar",
+    "surname": "Karimov",
+    "date_of_join": "2023-07-20",
+    "full_name_initials": "IK",
+    "gender": "male"
+  },
+  {
+    "id": 20,
+    "name": "Aida",
+    "surname": "Guliyeva",
+    "date_of_join": "2023-08-25",
+    "full_name_initials": "AG",
+    "gender": "female"
+  }
+]
