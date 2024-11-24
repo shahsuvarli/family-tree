@@ -132,7 +132,3 @@ Have questions or feedback? Reach out:
 ---
 
 Enjoy exploring and building your family history with *Family-Tree*! 🌟  
-
---- 
-
-This README highlights all key aspects of the project, dependencies, and usage instructions. Feel free to tweak it further for your needs!
