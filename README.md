@@ -1,7 +1,3 @@
-Here’s a polished **README.md** for your React Native mobile application, *Family-Tree*:
-
----
-
 # 🌳 Family-Tree Mobile App  
 
 **Family-Tree** is a React Native mobile application that enables you to build and maintain a digital family tree. Effortlessly add family members, include key details, and visualize your family’s relationships on the go. Built with **Expo** and **Supabase**, this app offers a seamless, modern experience for tracking your family history.  
@@ -136,7 +132,3 @@ Have questions or feedback? Reach out:
 ---
 
 Enjoy exploring and building your family history with *Family-Tree*! 🌟  
-
---- 
-
-This README highlights all key aspects of the project, dependencies, and usage instructions. Feel free to tweak it further for your needs!
