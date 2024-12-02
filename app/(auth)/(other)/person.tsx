@@ -29,7 +29,7 @@ export default function Person() {
       .single();
 
     if (data || !error) {
-      console.log("this happens on getuser data", data);
+      // console.log("this happens on getuser data", data);
       // console.log("this happens on getuser data", data);
       // setIsFavorite(data.is_favorite);
       setIsFavorite(() => data.is_favorite);
