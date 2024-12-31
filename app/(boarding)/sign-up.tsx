@@ -17,6 +17,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSession } from "../ctx";
 import { supabase } from "@/db";
 
+interface FormData {
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+}
+
 const Page = () => {
   const { signIn } = useSession();
   const {
@@ -32,7 +39,7 @@ const Page = () => {
     },
   });
 
-  const onSubmit = async ({ email, password, name, surname }: any) => {
+  const onSubmit = async ({ email, password, name, surname }: FormData) => {
     await supabase.auth
       .signUp({
         email,

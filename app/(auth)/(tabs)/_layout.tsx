@@ -7,13 +7,9 @@ export default function TabLayout() {
     <Tabs
       initialRouteName="home"
       screenOptions={{
-        // tabBarActiveTintColor: Colors.tintColorLight,
-        // headerShown: true,
         tabBarShowLabel: false,
         tabBarStyle: {
-          // backgroundColor: Colors.background,
           borderBottomColor: "red",
-          // height: 170,
         },
       }}
     >

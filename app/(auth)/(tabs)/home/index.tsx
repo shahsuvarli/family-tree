@@ -1,7 +1,4 @@
 import { StyleSheet, ScrollView } from "react-native";
-import { useSession } from "@/app/ctx";
-import { useEffect, useState } from "react";
-import { supabase } from "@/db";
 import BottomPCards from "@/components/HomeComponents/BottomsCards";
 import WelcomeBox from "@/components/HomeComponents/WelcomeBox";
 import TopBarComponent from "@/components/HomeComponents/TopBarComponent";
@@ -9,22 +6,6 @@ import BodyComponent from "@/components/HomeComponents/BodyComponent";
 import { Colors } from "@/constants/Colors";
 
 export default function page() {
-  const { session } = useSession();
-  const [data, setData] = useState<any>(null);
-
-  useEffect(() => {
-    const fetchdata = async () => {
-      const { data, error } = await supabase
-        .from("people")
-        .select("id, initials, name, gender, created_at, surname")
-        .filter("user_id", "eq", session)
-        .order("created_at", { ascending: false })
-        .limit(5);
-      setData(data);
-    };
-    fetchdata();
-  }, []);
-
   return (
     <ScrollView
       style={styles.container}

@@ -15,6 +15,11 @@ import Toast from "react-native-toast-message";
 import { supabase } from "@/db";
 import { useSession } from "@/app/ctx";
 
+interface FormData {
+  name: string;
+  surname: string;
+}
+
 export default function Page() {
   const { session } = useSession();
 
@@ -61,7 +66,7 @@ export default function Page() {
     fetchData();
   }, []);
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: FormData) => {
     const { data, error } = await supabase
       .from("user")
       .update({

@@ -16,9 +16,17 @@ import { useSession } from "@/app/ctx";
 import { format } from "date-fns";
 import { router } from "expo-router";
 
+interface UserType {
+  name: string;
+  surname: string;
+  email: string;
+  people_added: number;
+  family_members: number;
+  created_at: string;
+}
+
 const Page = () => {
-  const [error, setError] = useState<any>(null);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<UserType>();
   const image = "https://avatars.githubusercontent.com/u/46631807?v=4";
   const is_focused = useIsFocused();
   const { session } = useSession();
@@ -38,7 +46,7 @@ const Page = () => {
           });
         }
       } catch (error) {
-        setError(error);
+        console.error(error);
       }
     };
 
@@ -110,7 +118,7 @@ const Page = () => {
             data={[{ id: 1, name: "Recently added" }]}
             renderItem={({ item }) => (
               <Pressable
-                onPress={() => router.push("/(auth)/(tabs)/other/recently-added")}
+                onPress={() => router.push("/(auth)/(other)/recently-added")}
                 style={styles.listItem}
               >
                 <Text style={styles.listItemText}>{item.name}</Text>

@@ -4,6 +4,15 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSession } from "@/app/ctx";
 import { supabase } from "@/db";
 import Toast from "react-native-toast-message";
+import { PersonType, SectionType } from "@/types";
+
+interface PersonLineAddProps {
+  item: PersonType;
+  section: SectionType;
+  person_id: string;
+  handleClosePress: () => void;
+  fetchData: () => void;
+}
 
 const PersonLineAdd = ({
   item,
@@ -11,7 +20,7 @@ const PersonLineAdd = ({
   person_id,
   handleClosePress,
   fetchData,
-}: any) => {
+}: PersonLineAddProps) => {
   const { session } = useSession();
   const created_at = new Date(item.created_at).toLocaleDateString();
 

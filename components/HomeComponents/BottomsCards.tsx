@@ -1,14 +1,15 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { results } from "@/assets/data/home-page-cards";
 import { useSession } from "@/app/ctx";
+import { Result } from "@/types";
 
 const BottomsCards = () => {
   const { session } = useSession();
   return (
     <View style={styles.gridContainer}>
-      {results.map((item: any) => (
+      {results.map((item: Result) => (
         <Pressable
           style={styles.gridCardContainer}
           onPress={() =>

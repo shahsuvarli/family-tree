@@ -1,6 +1,6 @@
 import { supabase } from "@/db";
 
-const useFamily = async (session: any, person_id: any) => {
+const useFamily = async (session: string, person_id: string) => {
   let { data, error } = await supabase.rpc("get_relation", {
     user_id: session,
     my_id: person_id,

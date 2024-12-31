@@ -1,7 +1,6 @@
 import {
   FlatList,
   RefreshControl,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -13,11 +12,12 @@ import { Colors } from "@/constants/Colors";
 import { supabase } from "@/db";
 import { useSession } from "@/app/ctx";
 import PersonLine from "@/components/PersonLine";
+import { PersonType } from "@/types";
 
 const page = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
   const { session } = useSession();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<PersonType[]>();
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchSearchResults = async (search: string) => {
@@ -29,7 +29,7 @@ const page = () => {
       .order("created_at", { ascending: false })
       .or(`name.ilike.%${search}%,surname.ilike.%${search}%`);
 
-    setData(data);
+    setData(data || []);
     setRefreshing(false);
   };
 

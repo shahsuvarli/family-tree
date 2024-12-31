@@ -5,10 +5,21 @@ import { Colors } from "@/constants/Colors";
 import { supabase } from "@/db";
 import { useSession } from "@/app/ctx";
 import Toast from "react-native-toast-message";
+import { PersonType, SectionType } from "@/types";
 
-const BottomPeople = ({ section, person_id, handleClosePress }: any) => {
+interface BottomPeopleProps {
+  section: SectionType;
+  person_id: string;
+  handleClosePress: () => void;
+}
+
+const BottomPeople = ({
+  section,
+  person_id,
+  handleClosePress,
+}: BottomPeopleProps) => {
   const { session } = useSession();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<PersonType[]>([]);
   const [search, setSearch] = useState("");
   const fetchData = async (text: string = "") => {
     const { data, error } = await supabase
@@ -17,7 +28,7 @@ const BottomPeople = ({ section, person_id, handleClosePress }: any) => {
       .filter("user_id", "eq", session)
       .order("created_at", { ascending: false })
       .or(`name.ilike.%${text}%,surname.ilike.%${text}%`);
-    setData(data);
+    setData(data || []);
 
     if (error) {
       Toast.show({
@@ -41,7 +52,7 @@ const BottomPeople = ({ section, person_id, handleClosePress }: any) => {
   }, [search]);
 
   return (
-    <>
+    <View>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>
           add {section?.title?.toLowerCase()}
@@ -68,7 +79,7 @@ const BottomPeople = ({ section, person_id, handleClosePress }: any) => {
         keyExtractor={(item, index) => index.toString()}
         style={styles.flatList}
       />
-    </>
+    </View>
   );
 };
 

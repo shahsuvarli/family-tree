@@ -3,7 +3,6 @@ import PersonLine from "@/components/PersonLine";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Colors } from "@/constants/Colors";
-import family_data from "@/assets/data/empty.json";
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useSession } from "@/app/ctx";
 import useFamily from "@/hooks/useFamily";
@@ -11,15 +10,16 @@ import { router, useLocalSearchParams, useNavigation } from "expo-router";
 import BottomPeople from "@/components/BottomPeople";
 import Animated, { useSharedValue, withSpring } from "react-native-reanimated";
 import { supabase } from "@/db";
+import { FamilyType, PersonType, SectionType } from "@/types";
 
 export default function Person() {
   const { id: person_id } = useLocalSearchParams();
   const navigation = useNavigation();
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
-  const [family, setFamily] = useState<any>([...family_data]);
-  const [section, setSection] = useState("");
+  const [family, setFamily] = useState<FamilyType[]>();
+  const [section, setSection] = useState<SectionType>();
   const { session } = useSession();
-  const [open, setOpen] = useState<Boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const getUserData = async () => {
     const { data, error } = await supabase
@@ -29,12 +29,7 @@ export default function Person() {
       .single();
 
     if (data || !error) {
-      // console.log("this happens on getuser data", data);
-      // console.log("this happens on getuser data", data);
-      // setIsFavorite(data.is_favorite);
       setIsFavorite(() => data.is_favorite);
-      // console.log("is favorite", isFavorite);
-
       navigation.setOptions({
         title: `${data.name}'s family`,
         headerRight: () => {
@@ -75,48 +70,7 @@ export default function Person() {
     }
   };
 
-  // useEffect(() => {
-  //   navigation.setOptions({
-  //     headerRight: () => {
-  //       return (
-  //         <View
-  //           style={{
-  //             flexDirection: "row",
-  //             justifyContent: "center",
-  //             alignItems: "center",
-  //             gap: 15,
-  //           }}
-  //         >
-  //           <Pressable onPress={handleFavorite}>
-  //             <AntDesign
-  //               name={isFavorite ? "star" : "staro"}
-  //               size={30}
-  //               color={Colors.button}
-  //             />
-  //           </Pressable>
-  //           <Pressable
-  //             onPress={() =>
-  //               router.push({
-  //                 pathname: "/(auth)/(tabs)/home/edit-person",
-  //                 params: { person_id },
-  //               })
-  //             }
-  //           >
-  //             <FontAwesome
-  //               name="pencil-square-o"
-  //               size={27}
-  //               color={Colors.button}
-  //             />
-  //           </Pressable>
-  //         </View>
-  //       );
-  //     },
-  //   });
-  // }, [isFavorite]);
-
   const handleFavorite = useCallback(async () => {
-    // console.log("Pressed hanlde favorite, isfavorite:", isFavorite);
-
     const { data, error } = await supabase
       .from("people")
       .update({ is_favorite: !isFavorite })
@@ -124,15 +78,11 @@ export default function Person() {
       .select("id, is_favorite")
       .single();
     if (data || !error) {
-      // console.log("Favorite updated to", data);
-      // setIsFavorite(() => data.is_favorite);
       getUserData();
-      // setIsFavorite(data.is_favorite);
     }
   }, [person_id]);
 
   useEffect(() => {
-    // console.log("fetching family");
     async function fetchProfile() {
       const value = await useFamily(session, person_id);
       setFamily(value);
@@ -142,7 +92,6 @@ export default function Person() {
   }, [open]);
 
   useEffect(() => {
-    // console.log("fetching user data");
     getUserData();
   }, []);
 
@@ -150,7 +99,7 @@ export default function Person() {
 
   const bottomSheetModalRef = useRef<BottomSheet>(null);
 
-  function handlePlusPress(section: any) {
+  function handlePlusPress(section: SectionType): void {
     setOpen(true);
     opacityShareValue.value = withSpring(0.5);
     setSection(section);
@@ -166,6 +115,10 @@ export default function Person() {
     bottomSheetModalRef.current?.close();
   };
 
+  if (!family) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.content, { opacity: opacityShareValue }]}>
@@ -175,7 +128,7 @@ export default function Person() {
             return null;
           }}
           stickySectionHeadersEnabled={false}
-          renderSectionHeader={({ section }: any) => {
+          renderSectionHeader={({ section }: { section: FamilyType }) => {
             const count = section?.data.length;
             return (
               <View style={styles.sectionHeader}>
@@ -187,14 +140,8 @@ export default function Person() {
                 </View>
                 <View>
                   {count ? (
-                    section.data.map((item: any) => {
-                      return (
-                        <PersonLine
-                          item={item}
-                          key={item.id}
-                          person_id={person_id}
-                        />
-                      );
+                    section.data.map((item: PersonType) => {
+                      return <PersonLine item={item} key={item.id} />;
                     })
                   ) : (
                     <Text style={styles.noItemsText}>
@@ -206,7 +153,7 @@ export default function Person() {
             );
           }}
           stickyHeaderHiddenOnScroll={true}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(item) => item.id}
         />
       </Animated.View>
 

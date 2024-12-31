@@ -23,6 +23,7 @@ import {
 } from "@/assets/data/new-person.json";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { router } from "expo-router";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 export default function HomeScreen() {
   const {
@@ -43,9 +44,14 @@ export default function HomeScreen() {
     },
   });
 
+  const [date, setDate] = useState<Date>(new Date());
+
   const { session } = useSession();
   const onSubmit = async (values: any) => {
-    const date = new Date(values.birthDate);
+    // const date = new Date(values.birthDate);
+    // const [date, setDate] = useState<string>(
+    //   new Date(values.birthDate).toLocaleString()
+    // );
     const surname = values.surname ? values.surname[0] : "";
     const initials = values.name[0] + surname;
     const { data, error } = await supabase
@@ -85,15 +91,15 @@ export default function HomeScreen() {
         swipeable: true,
       });
       reset();
-      setDate(null);
+      setDate(new Date());
       router.push({
-        pathname: "/(auth)/(tabs)/home/person",
+        pathname: "/(auth)/(other)/person",
         params: { id: data.id, name: data.name },
       });
       // Redirect({ href: "/(auth)/(tabs)/home/person",  });
     }
   };
-  const [date, setDate] = useState<any>(null);
+  // const [date, setDate] = useState<string>("");
   const [showCalendar, setShowCalendar] = useState(false);
   const toggleCalendar = () => setShowCalendar(!showCalendar);
 
@@ -186,25 +192,28 @@ export default function HomeScreen() {
                   />
                   <View style={styles.inputField}>
                     <Text style={styles.dateText}>
-                      {date ? format(date, "dd MMM yyyy") : "Date of birth"}
+                      {date.toLocaleString()}
+                      {/* {date ? format(date, "dd MMM yyyy") : "Date of birth"} */}
                     </Text>
                   </View>
                 </Pressable>
 
                 {showCalendar && (
                   <View>
-                    <DateTimePicker
+                    <RNDateTimePicker
                       testID="dateTimePicker"
-                      is24Hour={true}
-                      value={date ? date : new Date()}
+                      // is24Hour={true}
+                      value={date}
                       onChange={(e: any) => {
                         const d = new Date(e);
                         setDate(d);
                         // setValue("birthDate", d.toISOString().split("T")[0]);
                       }}
                       mode="date"
+                      // disabled={true}
                       // onConfirm={toggleCalendar}
                       // onCancel={toggleCalendar}
+                      textColor="#fff"
                       style={styles.datePicker}
                     />
                     <View style={styles.datePickerButtonsContainer}>
@@ -386,8 +395,10 @@ const styles = StyleSheet.create({
     color: "#000000a6",
   },
   datePicker: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     height: 150,
+    backgroundColor: "#fff",
+    color: "#000",
   },
   datePickerButtonsContainer: {
     flexDirection: "row",

@@ -1,4 +1,6 @@
-export const results = [
+import { Result } from "@/types";
+
+export const results: Result[] = [
   {
     id: 1,
     title: "Family",
