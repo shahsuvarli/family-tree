@@ -23,6 +23,17 @@ import {
 } from "@/assets/data/new-person.json";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useLocalSearchParams } from "expo-router";
+import { PersonType } from "@/types";
+
+interface ValuesType {
+  name: string;
+  surname: string;
+  birthDate: string;
+  gender: number;
+  maritalStatus: number;
+  life: number;
+  notes: string;
+}
 
 export default function Page() {
   const { person_id } = useLocalSearchParams();
@@ -76,7 +87,7 @@ export default function Page() {
   }, []);
 
   const { session } = useSession();
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: ValuesType) => {
     const date = new Date(values.birthDate);
     const surname = values.surname ? values.surname[0] : "";
     const initials = values.name[0] + surname;
@@ -117,7 +128,7 @@ export default function Page() {
       });
     }
   };
-  const [date, setDate] = useState<any>(null);
+  const [date, setDate] = useState<Date>();
   const [showCalendar, setShowCalendar] = useState(false);
   const toggleCalendar = () => setShowCalendar(!showCalendar);
 
@@ -222,11 +233,8 @@ export default function Page() {
                       onChange={(e: any) => {
                         const d = new Date(e);
                         setDate(d);
-                        // setValue("birthDate", d.toISOString().split("T")[0]);
                       }}
                       mode="date"
-                      // onConfirm={toggleCalendar}
-                      // onCancel={toggleCalendar}
                       style={styles.datePicker}
                     />
                     <View style={styles.datePickerButtonsContainer}>

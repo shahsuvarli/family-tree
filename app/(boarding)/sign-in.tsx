@@ -15,6 +15,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSession } from "../ctx";
 import { supabase } from "@/db";
 
+interface FormDataType {
+  email: string;
+  password: string;
+}
+
 const Page = () => {
   const { signIn } = useSession();
   const {
@@ -28,7 +33,7 @@ const Page = () => {
     },
   });
 
-  const onSubmit = async ({ email, password }: any) => {
+  const onSubmit = async ({ email, password }: FormDataType) => {
     const {
       data: { user },
       error,
@@ -47,7 +52,7 @@ const Page = () => {
       return;
     }
 
-    const userId = user?.id;
+    const userId: any = user?.id;
     await AsyncStorage.setItem("family-tree", userId as string);
 
     signIn(userId);

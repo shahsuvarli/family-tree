@@ -2,6 +2,17 @@ import { Pressable } from "react-native";
 import { router, Stack } from "expo-router";
 import { FontAwesome } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
+import { RouteProp } from "@react-navigation/native";
+
+type FavoriteScreenParams = {
+  id: string;
+};
+
+// Specify the route prop type for the "favorite" screen
+type FavoriteScreenRouteProp = RouteProp<
+  { favorite: FavoriteScreenParams },
+  "favorite"
+>;
 
 export default function OtherLayout() {
   return (
@@ -53,6 +64,7 @@ export default function OtherLayout() {
           },
         })}
       />
+
       <Stack.Screen
         name="recently-added"
         options={{

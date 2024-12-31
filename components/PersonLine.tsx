@@ -1,11 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
-import { router, useRouter } from "expo-router";
+import { router } from "expo-router";
 import { supabase } from "@/db";
+import { PersonType } from "@/types";
 
-const PersonLine = ({ item }: any) => {
-  // const router = useRouter();
+const PersonLine = ({ item }: { item: PersonType }) => {
   const created_at = new Date(item.created_at).toLocaleDateString();
 
   const handleLongPress = async () => {
